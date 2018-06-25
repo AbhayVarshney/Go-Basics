@@ -36,6 +36,10 @@ func main() {
 	fmt.Println(multiple(w1, w2))
 	convertType()
 	initializeClasses()
+	cond()
+	arrays()
+	loops()
+	maps()
 }
 
 const usixteenbitmax float64 = 65535
@@ -63,6 +67,27 @@ func (c car) kmh() float64 {
 // value receiver --> makes copy of struct and makes changes to that copy
 func (c *car) new_top_speed (newspeed float64) {
 	c.top_speed_kmh = newspeed
+}
+
+func cond() {
+	myX := 10
+	if myX < 12 { // standard if condition
+		fmt.Println("myX is less than 12.")
+	}
+}
+
+func arrays() {
+	//var myA [5]int
+	//myA := [5]int{5, 4, 3, 2, 1}
+	myA := []int{5, 4, 3, 2, 1}
+	myA = append(myA, 10)
+	myA[2] = 4
+	fmt.Println(myA)
+
+	// iterate through array
+	for index, value := range myA {
+		fmt.Println("index:", index, "value:", value)
+	}
 }
 
 func dataTypes() {
@@ -103,4 +128,32 @@ func convertType() {
 	x := a // x will be type int
 	fmt.Println("B (conversion type):", b)
 	fmt.Println("X (conversion type):", x)
+}
+
+func loops() {
+	sum := 0
+	for i := 0; i < 10; i++ { //traditional for loop
+		sum += i
+	}
+
+	whileLoop := 1
+	for whileLoop < 1000 { // while loops
+		whileLoop += whileLoop
+	}
+	fmt.Println("my sum:", sum)
+	fmt.Println("my sum:", whileLoop)
+}
+
+func maps() {
+	vertices := make(map[string]int)
+	vertices["triangle"] = 2
+	vertices["square"] = 3
+	vertices["dodecagon"] = 12
+
+	delete(vertices, "square")
+	fmt.Println("Map:", vertices)
+	// iterate through array
+	for index, value := range vertices {
+		fmt.Println("index:", index, "value:", value)
+	}
 }
